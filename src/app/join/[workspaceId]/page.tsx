@@ -13,6 +13,8 @@ import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { useEffect, useMemo } from "react"
 
+
+
 const JoinPage = () => {
     const workspaceId = useWorkspaceId();
     const router = useRouter();

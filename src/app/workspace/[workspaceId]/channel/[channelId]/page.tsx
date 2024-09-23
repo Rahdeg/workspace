@@ -8,6 +8,8 @@ import { ChatInput } from "./chat-input";
 import { useGetMessages } from "@/features/messages/api/use-get-messages";
 import { MessageList } from "@/components/message-list";
 
+
+
 const ChannelIdPage = () => {
     const channelId = useChannelId();
 
