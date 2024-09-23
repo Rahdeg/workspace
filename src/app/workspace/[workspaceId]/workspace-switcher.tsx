@@ -1,7 +1,7 @@
 "use client"
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { useCreateWorkspaceModal } from '@/features/store/use-create-workspace-modal'
+import { useCreateWorkspaceModal } from '@/features/workspaces/store/use-create-workspace-modal'
 import { useGetWorkspace } from '@/features/workspaces/api/use-get-workspace'
 import { useGetWorkspaces } from '@/features/workspaces/api/use-get-workspaces'
 import { useWorkspaceId } from '@/hooks/use-workspace-id'

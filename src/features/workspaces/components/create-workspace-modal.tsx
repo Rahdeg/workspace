@@ -6,7 +6,7 @@ import {
     DialogTitle,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input";
-import { useCreateWorkspaceModal } from "@/features/store/use-create-workspace-modal"
+import { useCreateWorkspaceModal } from "@/features/workspaces/store/use-create-workspace-modal"
 import { useCreateWorkspace } from "../api/use-create-workspace";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
