@@ -54,7 +54,6 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
                 onClose();
             },
             onError: (error) => {
-                const errorMessage = error.message;
                 toast.error("Failed to remove member, May be he is an  Admin")
 
             }
@@ -157,12 +156,13 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
                             <div className=" flex items-center gap-2 mt-4">
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
-                                        <Button variant="outline" className=" w-full capitalize">
+                                        <Button variant="outline" className=" w-full capitalize" disabled={isUpdatingMember}>
                                             {member.role} <ChevronDownIcon className="size-4 ml-2" />
                                         </Button>
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent className="w-full">
                                         <DropdownMenuRadioGroup
+
                                             value={member.role}
                                             onValueChange={(role) => onUpdate(role as "admin" | "member")}
                                         >
@@ -179,7 +179,7 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
                                 </DropdownMenu>
 
 
-                                <Button variant="outline" className="w-full" onClick={onRemove}>
+                                <Button variant="outline" className="w-full" onClick={onRemove} disabled={isRemovingMember}>
                                     Remove
                                 </Button>
                             </div>

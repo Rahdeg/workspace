@@ -15,8 +15,8 @@ export const Thumbnail = ({ url }: ThumbnailProps) => {
                     <img src={url} alt="Message image" className=" rounded-md object-cover size-full" />
                 </div>
             </DialogTrigger>
-            <DialogContent className=" max-w-[800px] h-screen border-none bg-transparent p-0 shadow-none">
-                <img src={url} alt="Message image" className=" rounded-md object-cover size-full" />
+            <DialogContent className=" max-w-[800px] border-none bg-transparent p-0 shadow-none">
+                <img src={url} alt="Message image" className=" rounded-md object-contain size-full" />
             </DialogContent>
         </Dialog>
 

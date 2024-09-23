@@ -9,7 +9,6 @@ import { ImageIcon, Smile, XIcon } from "lucide-react";
 import { Hint } from "./hint";
 import { Delta, Op } from "quill/core";
 import { cn } from "@/lib/utils";
-import { current } from "../../convex/members";
 import { EmojiPopover } from "./emoji-popover";
 import Image from "next/image";
 
@@ -134,7 +133,7 @@ const Editor = ({ variant = "create", onCancel, onSubmit, placeholder = "Write s
         }
     }
 
-    const onEmojiSelect = (emoji: any) => {
+    const onEmojiSelect = (emoji: { native: string; }) => {
         const quill = quillRef.current;
         quill?.insertText(quill?.getSelection()?.index || 0, emoji.native)
     }
