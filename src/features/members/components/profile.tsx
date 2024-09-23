@@ -53,7 +53,7 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
                 toast.success("Member removed");
                 onClose();
             },
-            onError: (error) => {
+            onError: () => {
                 toast.error("Failed to remove member, May be he is an  Admin")
 
             }
