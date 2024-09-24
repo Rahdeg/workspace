@@ -39,9 +39,9 @@ export const MobileSidebar = ({ onClick }: MobileSidebarProps) => {
                 onClick={onClick}
             />
 
-            <div className=' flex flex-col items-center justify-center gap-y-1  mt-10'>
-                <UserButton />
-            </div>
+
+            <UserButton />
+
         </aside>
     )
 }

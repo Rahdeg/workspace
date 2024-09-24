@@ -58,7 +58,7 @@ export const Toolbar = () => {
     }
 
     return (
-        <div className=' bg-[#481349] flex items-center justify-between h-10 p-1.5'>
+        <div className=' bg-[#481349] flex items-center justify-between  h-20 lg:h-10 p-1.5 fixed lg:relative top-0 left-0 w-full  shadow-md z-50'>
             {
                 isMobile ? (<div className="flex-1 ">
                     <Sheet open={isOpen} onOpenChange={setIsOpen} >

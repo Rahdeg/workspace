@@ -39,7 +39,7 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
                 }
 
 
-                <ResizablePanelGroup direction="horizontal" autoSaveId="ca-workspace-layout">
+                <ResizablePanelGroup direction="horizontal" autoSaveId="ca-workspace-layout" id="10" >
                     <ResizablePanel
                         defaultSize={20}
                         minSize={11}
@@ -50,14 +50,14 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
                     <ResizableHandle withHandle />
                     {
                         isMobile && !parentMessageId && !profileMemberId ? (
-                            <ResizablePanel minSize={20} defaultSize={80}>
+                            <ResizablePanel minSize={20} defaultSize={80} id="1">
                                 {children}
                             </ResizablePanel>
                         ) : null
                     }
                     {
                         !isMobile && (
-                            <ResizablePanel minSize={20} defaultSize={80}>
+                            <ResizablePanel minSize={20} defaultSize={80} id="2">
                                 {children}
                             </ResizablePanel>
                         )
@@ -67,7 +67,7 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
                         showPanel && (
                             <>
                                 <ResizableHandle withHandle />
-                                <ResizablePanel minSize={20} defaultSize={29}>
+                                <ResizablePanel minSize={20} defaultSize={29} id="3">
                                     {
                                         parentMessageId ? (
                                             <Thread messageId={parentMessageId as Id<"messages">} onClose={onClose} />
