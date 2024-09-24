@@ -23,21 +23,51 @@ const sidebarItemVariants = cva(
 
 interface SidebarItemProps {
     label: string;
-    id: string;
+    id?: string;
+    isThread?: boolean;
+    isDraft?: boolean;
     icon: LucideIcon | IconType;
+    onClick?: () => void;
     variant?: VariantProps<typeof sidebarItemVariants>["variant"];
 }
 
-export const SidebarItem = ({ label, id, icon: Icon, variant }: SidebarItemProps) => {
+export const SidebarItem = ({ label, id, icon: Icon, variant, isDraft, isThread, onClick }: SidebarItemProps) => {
 
     const workspaceId = useWorkspaceId();
 
+    if (isThread) {
+        return (
+            <Button asChild variant="transparent" size="sm" className={cn(sidebarItemVariants({ variant: variant }))} onClick={onClick}>
+                <Link href={`/workspace/${workspaceId}/thread`}>
+                    <Icon className=" size-3.5 mr-1 shrink-0" />
+                    <span className=" text-sm truncate">{label} </span>
+                </Link>
+            </Button>
+
+        )
+    }
+
+    if (isDraft) {
+        return (
+            <Button asChild variant="transparent" size="sm" className={cn(sidebarItemVariants({ variant: variant }))} onClick={onClick}>
+                <Link href={`/workspace/${workspaceId}/draft`}>
+                    <Icon className=" size-3.5 mr-1 shrink-0" />
+                    <span className=" text-sm truncate">{label} </span>
+                </Link>
+            </Button>
+
+        )
+    }
+
+
     return (
         <Button asChild variant="transparent" size="sm" className={cn(sidebarItemVariants({ variant: variant }))}>
+
             <Link href={`/workspace/${workspaceId}/channel/${id}`}>
                 <Icon className=" size-3.5 mr-1 shrink-0" />
                 <span className=" text-sm truncate">{label} </span>
             </Link>
+
         </Button>
     )
 }

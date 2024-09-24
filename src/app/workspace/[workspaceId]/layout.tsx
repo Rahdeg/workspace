@@ -14,6 +14,7 @@ import { Loader } from "lucide-react";
 import { Id } from "../../../../convex/_generated/dataModel";
 import { Thread } from "@/features/messages/components/thread";
 import { Profile } from "@/features/members/components/profile";
+import { useMedia } from "react-use";
 
 interface WorkspaceIdLayoutProps {
     children: React.ReactNode;
@@ -23,17 +24,26 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
     const { parentMessageId, profileMemberId, onClose } = usePanel();
     const showPanel = !!parentMessageId || !!profileMemberId;
 
+    const isMobile = useMedia("(max-width: 760px)", false);
+
+
 
     return (
         <div className=" h-full ">
             <Toolbar />
             <div className=" flex h-[calc(100vh-40px)]">
-                <Sidebar />
+                {
+                    !isMobile && (
+                        <Sidebar />
+                    )
+                }
+
+
                 <ResizablePanelGroup direction="horizontal" autoSaveId="ca-workspace-layout">
                     <ResizablePanel
                         defaultSize={20}
                         minSize={11}
-                        className=" bg-[#5e2c5f]"
+                        className=" bg-[#5e2c5f] hidden lg:block"
                     >
                         <WorkspaceSidebar />
                     </ResizablePanel>

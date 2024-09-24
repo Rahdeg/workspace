@@ -14,8 +14,12 @@ import { useChannelId } from '@/hooks/use-channel-id';
 import { useMemberId } from '@/hooks/use-member-id';
 import { usePathname } from 'next/navigation';
 
+interface WorkspaceMobileSidebarProps {
+    onClick?: () => void;
+}
 
-export const WorkspaceSidebar = () => {
+
+export const WorkspaceMobileSidebar = ({ onClick }: WorkspaceMobileSidebarProps) => {
     const workspaceId = useWorkspaceId();
     const channelId = useChannelId();
     const memberId = useMemberId();
@@ -58,7 +62,7 @@ export const WorkspaceSidebar = () => {
     return (
         <div className='flex flex-col bg-[#5E2C5F] h-full '>
             <WorkspaceHeader workspace={workspace} isAdmin={member.role === "admin"} />
-            <div className=' flex flex-col px-2 mt-3'>
+            <div className=' flex flex-col px-2 mt-3' onClick={onClick}>
                 <SidebarItem label='Threads' icon={MessageSquareText} isThread
                     variant={pathname.includes("thread") ? "active" : "default"}
                 />
