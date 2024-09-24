@@ -14,7 +14,7 @@ interface MobileSidebarProps {
 export const MobileSidebar = ({ onClick }: MobileSidebarProps) => {
     const pathname = usePathname();
     return (
-        <aside className=' w-[70px] h-full bg-[#481349] flex flex-col gap-y-4 items-center  pt-[9px] pb-4'>
+        <aside className=' w-[70px] h-screen bg-[#481349] flex flex-col gap-y-4 items-center  pt-[9px] pb-4 mt-6'>
             <WorkspaceSwitcher />
             <SidebarButton
                 icon={Home}
@@ -39,7 +39,7 @@ export const MobileSidebar = ({ onClick }: MobileSidebarProps) => {
                 onClick={onClick}
             />
 
-            <div className=' flex flex-col items-center justify-center gap-y-1 mt-auto'>
+            <div className=' flex flex-col items-center justify-center gap-y-1  mt-10'>
                 <UserButton />
             </div>
         </aside>
