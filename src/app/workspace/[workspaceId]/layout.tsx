@@ -48,9 +48,21 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
                         <WorkspaceSidebar />
                     </ResizablePanel>
                     <ResizableHandle withHandle />
-                    <ResizablePanel minSize={20} defaultSize={80}>
-                        {children}
-                    </ResizablePanel>
+                    {
+                        isMobile && !parentMessageId && !profileMemberId ? (
+                            <ResizablePanel minSize={20} defaultSize={80}>
+                                {children}
+                            </ResizablePanel>
+                        ) : null
+                    }
+                    {
+                        !isMobile && (
+                            <ResizablePanel minSize={20} defaultSize={80}>
+                                {children}
+                            </ResizablePanel>
+                        )
+                    }
+
                     {
                         showPanel && (
                             <>

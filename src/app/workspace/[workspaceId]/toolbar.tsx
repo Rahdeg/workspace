@@ -67,7 +67,7 @@ export const Toolbar = () => {
                                 <Home className=' size-4' />
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="left" className='w-[90px] h-screen bg-[#481349] p-0 '>
+                        <SheetContent side="left" className='w-[70px] h-screen bg-[#481349] p-0 '>
                             <MobileSidebar onClick={onClick} />
                         </SheetContent>
                     </Sheet>
