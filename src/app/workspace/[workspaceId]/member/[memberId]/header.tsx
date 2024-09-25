@@ -16,7 +16,7 @@ export const Header = ({ memberName = "Member", memberImage, onClick }: HeaderPr
 
     return (
 
-        <div className=" bg-white border-b h-[49px] flex items-center px-4 overflow-hidden">
+        <div className=" bg-white border-b h-[49px] flex items-center px-4 overflow-hidden mt-20 lg:mt-0">
             <Button variant="ghost" className=" text-lg font-semibold px-2 overflow-hidden w-auto" size="sm" onClick={onClick}>
                 <Avatar className=" size-6 mr-2">
                     <AvatarImage src={memberImage} />

@@ -14,7 +14,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { useGetWorkspace } from '@/features/workspaces/api/use-get-workspace'
 import { useWorkspaceId } from '@/hooks/use-workspace-id'
-import { Home, Info, Search, Workflow } from 'lucide-react'
+import { HomeIcon, Info, Search, Workflow } from 'lucide-react'
 import React, { useState } from 'react'
 import { useGetChannels } from "@/features/channels/api/use-get-channels"
 import { useGetMembers } from "@/features/members/api/use-get-members"
@@ -58,13 +58,13 @@ export const Toolbar = () => {
     }
 
     return (
-        <div className=' bg-[#481349] flex items-center justify-between  h-20 lg:h-10 p-1.5 fixed lg:relative top-0 left-0 w-full  shadow-md z-50'>
+        <div className=' bg-[#481349] flex items-center  justify-between  h-16 lg:h-10 p-1.5 fixed lg:relative top-0 left-0 w-full  shadow-md z-50'>
             {
                 isMobile ? (<div className="flex-1 ">
                     <Sheet open={isOpen} onOpenChange={setIsOpen} >
                         <SheetTrigger asChild>
-                            <Button variant="outline" size="sm" className=' font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition'>
-                                <Home className=' size-4' />
+                            <Button variant="transparent" className="flex lg:hidden">
+                                <HomeIcon className=' size-8 text-white' />
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="left" className='w-[70px] h-screen bg-[#481349] p-0 '>
@@ -76,7 +76,7 @@ export const Toolbar = () => {
 
 
             <div className=' lg:min-w-[280px] lg:max-[642px] grow-[2] shrink'>
-                <Button size="sm" className=' bg-accent/25 hover:bg-accent/25 w-full justify-start h-7 px-2' onClick={() => setOpen(true)}>
+                <Button size="sm" className=' bg-accent/25 hover:bg-accent/25 w-full justify-start h-10 lg:h-7 px-2' onClick={() => setOpen(true)}>
                     <Search className=' size-4 text-white mr-2' />
                     <span className='text-white text-xs'>
                         Search {data?.name}
@@ -114,7 +114,7 @@ export const Toolbar = () => {
                 </CommandDialog>
             </div>
             <div className=' ml-auto flex-1 hidden lg:flex items-center justify-end'>
-                <Button variant="transparent" className="">
+                <Button variant="ghost" className="">
                     <Info className=' size-5 text-white' />
                 </Button>
             </div>
@@ -122,7 +122,7 @@ export const Toolbar = () => {
                 <Sheet open={isWorkspaceOpen} onOpenChange={setIsWorkspaceOpen} >
                     <SheetTrigger asChild>
                         <Button variant="transparent" className="flex lg:hidden">
-                            <Workflow className=' size-5 text-white' />
+                            <Workflow className=' size-8 text-white' />
                         </Button>
                     </SheetTrigger>
                     <SheetContent side="right" className='w-full h-full bg-[#481349] p-0 pr-4'>
