@@ -99,7 +99,7 @@ export const SignInCard = ({ setState }: SignInCardProps) => {
                         Continue with Github
                     </Button>
                 </div>
-                <div className=" flex items-center justify-between">
+                <div className=" flex flex-col md:flex-row gap-y-2 items-center justify-between">
                     <p className=' text-xs text-muted-foreground'>
                         Don&apos;t have an account? <span onClick={() => setState("signUp")} className=' text-sky-700 hover:underline cursor-pointer'> Sign up</span>
                     </p>

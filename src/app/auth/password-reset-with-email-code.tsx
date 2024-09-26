@@ -5,6 +5,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { CodeInput } from "@/features/auth/components/code-input";
 import { SignInWithEmailCode } from "@/features/auth/components/SignInWithEmailCode";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function ResetPasswordWithEmailCode({
     handleCancel,
@@ -16,62 +17,80 @@ export function ResetPasswordWithEmailCode({
     const { signIn } = useAuthActions();
     const [step, setStep] = useState<"forgot" | { email: string }>("forgot");
     const [submitting, setSubmitting] = useState(false);
+
     return step === "forgot" ? (
-        <>
-            <h2 className="font-semibold text-2xl tracking-tight">
-                Send password reset code
-            </h2>
-            <SignInWithEmailCode
-                handleCodeSent={(email) => setStep({ email })}
-                provider={provider}
-            >
-                <input name="flow" type="hidden" value="reset" />
-            </SignInWithEmailCode>
-            <Button type="button" variant="link" onClick={handleCancel}>
-                Cancel
-            </Button>
-        </>
-    ) : (
-        <>
-            <h2 className="font-semibold text-2xl tracking-tight">
-                Check your email
-            </h2>
-            <p className="text-muted-foreground text-sm">
-                Enter the 8-digit code we sent to your email address and choose a new
-                password.
-            </p>
-            <form
-                className="flex flex-col"
-                onSubmit={(event) => {
-                    event.preventDefault();
-                    setSubmitting(true);
-                    const formData = new FormData(event.currentTarget);
-                    signIn(provider, formData).catch((error) => {
-                        console.error(error);
-                        toast.error("Code could not be verified or new password is too short, try again");
-                        setSubmitting(false);
-                    });
-                }}
-            >
-                <label htmlFor="email">Code</label>
-                <CodeInput />
-                <label htmlFor="newPassword">New Password</label>
-                <Input
-                    type="password"
-                    name="newPassword"
-                    id="newPassword"
-                    className="mb-4 "
-                    autoComplete="new-password"
-                />
-                <input type="hidden" name="flow" value="reset-verification" />
-                <input type="hidden" name="email" value={step.email} />
-                <Button type="submit" disabled={submitting}>
-                    Continue
-                </Button>
-                <Button type="button" variant="link" onClick={() => setStep("forgot")}>
+        <Card className="p-0">
+
+            <CardHeader className=''>
+                <CardTitle>
+                    Send password reset code
+                </CardTitle>
+                <CardDescription>
+                    Use your  email to reset your password
+                </CardDescription>
+            </CardHeader>
+
+            <CardContent>
+                <SignInWithEmailCode
+                    handleCodeSent={(email) => setStep({ email })}
+                    provider={provider}
+                >
+                    <input name="flow" type="hidden" value="reset" />
+                </SignInWithEmailCode>
+            </CardContent>
+            <CardFooter>
+                <Button type="button" variant="outline" onClick={handleCancel} className="w-full">
                     Cancel
                 </Button>
-            </form>
-        </>
+            </CardFooter>
+
+        </Card>
+    ) : (
+        <Card className="p-0">
+            <CardHeader className=''>
+                <CardTitle>
+                    Check your email
+                </CardTitle>
+                <CardDescription>
+                    Enter the 8-digit code we sent to your email address and choose a new
+                    password.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <form
+                    className="flex flex-col"
+                    onSubmit={(event) => {
+                        event.preventDefault();
+                        setSubmitting(true);
+                        const formData = new FormData(event.currentTarget);
+                        signIn(provider, formData).catch((error) => {
+                            console.error(error);
+                            toast.error("Code could not be verified or new password is too short, try again");
+                            setSubmitting(false);
+                        });
+                    }}
+                >
+                    <label htmlFor="email" className=" my-2 font-bold">Code</label>
+                    <CodeInput />
+                    <label htmlFor="newPassword" className=" my-2 font-bold">New Password</label>
+                    <Input
+                        type="password"
+                        name="newPassword"
+                        id="newPassword"
+                        className="mb-4  "
+                        autoComplete="new-password"
+                    />
+                    <input type="hidden" name="flow" value="reset-verification" />
+                    <input type="hidden" name="email" value={step.email} />
+                    <Button type="submit" disabled={submitting}>
+                        Continue
+                    </Button>
+                    <Button type="button" variant="outline" onClick={() => setStep("forgot")} className="mt-2">
+                        Cancel
+                    </Button>
+                </form>
+            </CardContent>
+
+        </Card>
     );
 }
