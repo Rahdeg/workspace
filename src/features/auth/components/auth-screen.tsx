@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SignInFlow } from "../types";
 import { SignUpCard } from './sign-up-card';
 import { SignInCard } from './sign-in-card';
-import { ResetPasswordWithEmailCode } from './PasswordReset';
+import { ResetPasswordWithEmailCode } from '@/app/auth/password-reset-with-email-code';
 
 
 
